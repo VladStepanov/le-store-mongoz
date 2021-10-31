@@ -1,7 +1,9 @@
 
-exports.create = function(accounts, certs) {
+exports.create = function(db) {
 	var store = {};
 
+	const accounts = db.collection('domains-le-accounts')
+	const certs = db.collection('domains-le-certs')
 	store.accounts = {
 		setKeypair: function(opts) {
 			var id = (opts.account && opts.account.id) || opts.email || 'default';
